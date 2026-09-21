@@ -4,6 +4,14 @@ const db = require('./db')
 const app = express()
 app.use(express.json())
 
+app.get('/', (req, res) => {
+    res.json({ message: 'Assignment portal API is running' })
+})
+
+app.get('/.well-known/appspecific/com.chrome.devtools.json', (req, res) => {
+    res.json({})
+})
+
 app.post('/assignments', async (req, res) => {
     try {
         const { title, deadline } = req.body
